@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.crexative.calorietrackerapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.crexative.calorietrackerapp"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -37,7 +37,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.1.1'
+        kotlinCompilerExtensionVersion compose_ui_version
     }
     packagingOptions {
         resources {

@@ -9,8 +9,11 @@ import androidx.navigation.compose.rememberNavController
 import com.crexative.calorietrackerapp.navigation.navigate
 import com.crexative.core.navigation.Route
 import com.crexative.calorietrackerapp.ui.theme.CalorieTrackerAppTheme
+import com.crexative.onboarding_presentation.gender.GenderScreen
 import com.crexative.onboarding_presentation.welcome.WelcomeScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,9 @@ class MainActivity : ComponentActivity() {
                         WelcomeScreen(onNavigate = navController::navigate)
                     }
                     composable(Route.AGE){}
-                    composable(Route.GENDER){}
+                    composable(Route.GENDER){
+                        GenderScreen(onNavigate = navController::navigate)
+                    }
                     composable(Route.HEIGHT){}
                     composable(Route.WEIGHT){}
                     composable(Route.NUTRIENT_GOAL){}

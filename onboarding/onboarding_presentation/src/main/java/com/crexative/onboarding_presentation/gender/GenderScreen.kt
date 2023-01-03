@@ -20,7 +20,8 @@ import com.crexative.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun GenderScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit, viewModel: GenderViewModel = hiltViewModel()
+    onNavigate: (UiEvent.Navigate) -> Unit,
+    viewModel: GenderViewModel = hiltViewModel()
 ) {
 
     val spacing = LocalSpacing.current

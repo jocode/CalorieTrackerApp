@@ -9,11 +9,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.crexative.core.R
+import com.crexative.core.navigation.Route
 import com.crexative.core_ui.LocalSpacing
 import com.crexative.onboarding_presentation.components.ActionButton
+import com.crexative.core.util.UiEvent
 
 @Composable
-fun  WelcomeScreen() {
+fun  WelcomeScreen(
+    onNavigate: (UiEvent.Navigate) -> Unit
+) {
     val spacing = LocalSpacing.current
     Column(
         modifier = Modifier
@@ -30,7 +34,7 @@ fun  WelcomeScreen() {
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = stringResource(id = R.string.next),
-            onClick = { /*TODO*/ },
+            onClick = { onNavigate(UiEvent.Navigate(Route.AGE)) },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }

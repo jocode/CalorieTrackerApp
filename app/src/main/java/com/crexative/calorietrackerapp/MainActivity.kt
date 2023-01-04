@@ -19,6 +19,7 @@ import com.crexative.onboarding_presentation.age.AgeScreen
 import com.crexative.onboarding_presentation.gender.GenderScreen
 import com.crexative.onboarding_presentation.goal.GoalScreen
 import com.crexative.onboarding_presentation.height.HeightScreen
+import com.crexative.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.crexative.onboarding_presentation.weight.WeightScreen
 import com.crexative.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,7 +71,10 @@ class MainActivity : ComponentActivity() {
                             GoalScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.NUTRIENT_GOAL){
-
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.TRACKER_OVERVIEW){}
                         composable(Route.SEARCH){}

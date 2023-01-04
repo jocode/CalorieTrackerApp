@@ -1,5 +1,8 @@
 package com.crexative.tracker_data.di
 
+import android.app.Application
+import androidx.room.Room
+import com.crexative.tracker_data.local.TrackerDatabase
 import com.crexative.tracker_data.remote.OpenFoodApi
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -41,6 +44,19 @@ object TrackerDataModule {
     @Singleton
     fun provideOpenFoodApi(retrofit: Retrofit) : OpenFoodApi {
         return retrofit.create(OpenFoodApi::class.java)
+    }
+
+    /**
+     * Local Database
+     */
+    @Provides
+    @Singleton
+    fun provideTrackerDatabase(app: Application) : TrackerDatabase {
+        return Room.databaseBuilder(
+            app,
+            TrackerDatabase::class.java,
+            "tracker_db"
+        ).build()
     }
 
 }

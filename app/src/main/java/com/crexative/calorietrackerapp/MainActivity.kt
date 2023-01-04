@@ -12,10 +12,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.crexative.calorietrackerapp.navigation.navigate
-import com.crexative.core.navigation.Route
 import com.crexative.calorietrackerapp.ui.theme.CalorieTrackerAppTheme
+import com.crexative.core.navigation.Route
+import com.crexative.onboarding_presentation.activity.ActivityLevelScreen
 import com.crexative.onboarding_presentation.age.AgeScreen
 import com.crexative.onboarding_presentation.gender.GenderScreen
+import com.crexative.onboarding_presentation.goal.GoalScreen
 import com.crexative.onboarding_presentation.height.HeightScreen
 import com.crexative.onboarding_presentation.weight.WeightScreen
 import com.crexative.onboarding_presentation.welcome.WelcomeScreen
@@ -61,9 +63,15 @@ class MainActivity : ComponentActivity() {
                                 onNavigate = navController::navigate
                             )
                         }
-                        composable(Route.NUTRIENT_GOAL){}
-                        composable(Route.ACTIVITY){}
-                        composable(Route.GOAL){}
+                        composable(Route.ACTIVITY){
+                            ActivityLevelScreen(onNavigate = navController::navigate)
+                        }
+                        composable(Route.GOAL){
+                            GoalScreen(onNavigate = navController::navigate)
+                        }
+                        composable(Route.NUTRIENT_GOAL){
+
+                        }
                         composable(Route.TRACKER_OVERVIEW){}
                         composable(Route.SEARCH){}
                     }

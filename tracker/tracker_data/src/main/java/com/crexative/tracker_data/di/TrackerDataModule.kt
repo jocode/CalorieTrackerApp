@@ -2,8 +2,11 @@ package com.crexative.tracker_data.di
 
 import android.app.Application
 import androidx.room.Room
+import com.crexative.tracker_data.local.TrackerDao
 import com.crexative.tracker_data.local.TrackerDatabase
 import com.crexative.tracker_data.remote.OpenFoodApi
+import com.crexative.tracker_data.repository.TrackerRepositoryImpl
+import com.crexative.tracker_domain.repository.TrackerRepository
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -57,6 +60,18 @@ object TrackerDataModule {
             TrackerDatabase::class.java,
             "tracker_db"
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideTrackerRepository(
+        api: OpenFoodApi,
+        db: TrackerDatabase
+    ) : TrackerRepository {
+        return TrackerRepositoryImpl(
+            api = api,
+            dao = db.trackerDao()
+        )
     }
 
 }

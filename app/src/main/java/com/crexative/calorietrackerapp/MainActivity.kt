@@ -16,6 +16,8 @@ import com.crexative.core.navigation.Route
 import com.crexative.calorietrackerapp.ui.theme.CalorieTrackerAppTheme
 import com.crexative.onboarding_presentation.age.AgeScreen
 import com.crexative.onboarding_presentation.gender.GenderScreen
+import com.crexative.onboarding_presentation.height.HeightScreen
+import com.crexative.onboarding_presentation.weight.WeightScreen
 import com.crexative.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,8 +49,18 @@ class MainActivity : ComponentActivity() {
                         composable(Route.GENDER){
                             GenderScreen(onNavigate = navController::navigate)
                         }
-                        composable(Route.HEIGHT){}
-                        composable(Route.WEIGHT){}
+                        composable(Route.HEIGHT){
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.WEIGHT){
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
                         composable(Route.NUTRIENT_GOAL){}
                         composable(Route.ACTIVITY){}
                         composable(Route.GOAL){}

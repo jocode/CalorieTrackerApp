@@ -1,4 +1,4 @@
-package com.crexative.calorietrackerapp.ui.theme
+package com.crexative.core_ui
 
 import androidx.compose.ui.graphics.Color
 

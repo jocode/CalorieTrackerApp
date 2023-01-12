@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.crexative.core.domain.preferences.Preferences
-import com.crexative.core.navigation.Route
 import com.crexative.core.use_case.FilterOutDigits
 import com.crexative.core.util.UiEvent
 import com.crexative.onboarding_domain.use_case.ValidateNutrients
@@ -60,7 +59,7 @@ class NutrientGoalViewModel @Inject constructor(
                         preferences.saveFatRatio(result.fatRatio)
 
                         viewModelScope.launch {
-                            _uiEvent.send(UiEvent.Navigate(Route.TRACKER_OVERVIEW))
+                            _uiEvent.send(UiEvent.Success)
                         }
                     }
                     is ValidateNutrients.Result.Error -> {

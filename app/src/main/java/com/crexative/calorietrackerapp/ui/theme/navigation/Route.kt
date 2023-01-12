@@ -1,4 +1,4 @@
-package com.crexative.core.navigation
+package com.crexative.calorietrackerapp.ui.theme.navigation
 
 object Route {
 

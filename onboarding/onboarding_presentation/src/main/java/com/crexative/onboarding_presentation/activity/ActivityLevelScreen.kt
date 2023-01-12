@@ -13,7 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.crexative.core.R
 import com.crexative.core.domain.model.ActivityLevel
-import com.crexative.core.domain.model.Gender
 import com.crexative.core.util.UiEvent
 import com.crexative.core_ui.LocalSpacing
 import com.crexative.onboarding_presentation.components.ActionButton
@@ -21,7 +20,7 @@ import com.crexative.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun ActivityLevelScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: ActivityLevelViewModel = hiltViewModel()
 ) {
 
@@ -30,7 +29,7 @@ fun ActivityLevelScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

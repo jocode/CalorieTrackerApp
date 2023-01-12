@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.crexative.calorietrackerapp.navigation.navigate
 import com.crexative.calorietrackerapp.ui.theme.CalorieTrackerAppTheme
+import com.crexative.core.domain.preferences.Preferences
 import com.crexative.core.navigation.Route
 import com.crexative.onboarding_presentation.activity.ActivityLevelScreen
 import com.crexative.onboarding_presentation.age.AgeScreen
@@ -27,12 +28,20 @@ import com.crexative.onboarding_presentation.welcome.WelcomeScreen
 import com.crexative.tracker_presentation.search.SearchScreen
 import com.crexative.tracker_presentation.tracker_overview.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var preferences: Preferences
+
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val shouldShowOnboarding = preferences.loadShouldShowOnboarding()
+
         setContent {
             CalorieTrackerAppTheme {
                 val navController = rememberNavController()
@@ -43,7 +52,10 @@ class MainActivity : ComponentActivity() {
                     scaffoldState = scaffoldState
                 ) {
 
-                    NavHost(navController = navController, startDestination = Route.WELCOME) {
+                    NavHost(
+                        navController = navController,
+                        startDestination = if (shouldShowOnboarding) Route.WELCOME else Route.TRACKER_OVERVIEW
+                    ) {
                         composable(Route.WELCOME) {
                             WelcomeScreen(onNavigate = navController::navigate)
                         }

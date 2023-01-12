@@ -1,5 +1,6 @@
 package com.crexative.tracker_presentation.tracker_overview
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -66,7 +67,9 @@ fun TrackerOverviewScreen(
                             .fillMaxWidth()
                             .padding(horizontal = spacing.spaceSmall)
                     ) {
-                        state.trackedFoods.forEach { food ->
+                        Log.e("Trackable", state.trackedFoods.toString())
+                        val foods = state.trackedFoods.filter { it.mealType == meal.mealType }
+                        foods.forEach { food ->
                             TrackedFoodItem(
                                 trackedFood = food,
                                 onDeleteClick = {
@@ -75,6 +78,7 @@ fun TrackerOverviewScreen(
                             )
                             Spacer(modifier = Modifier.height(spacing.spaceMedium))
                         }
+
                         AddButton(
                             text = stringResource(
                                 id = R.string.add_meal,

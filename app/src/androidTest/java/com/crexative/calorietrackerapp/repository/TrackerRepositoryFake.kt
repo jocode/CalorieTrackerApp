@@ -13,7 +13,7 @@ class TrackerRepositoryFake: TrackerRepository {
     var shouldReturnError = false
 
     private val trackedFood = mutableListOf<TrackedFood>()
-    var searchResult = listOf<TrackableFood>()
+    var searchResults = listOf<TrackableFood>()
 
     private val getFoodsForDateFlow = MutableSharedFlow<List<TrackedFood>>(replay = 1)
 
@@ -25,7 +25,7 @@ class TrackerRepositoryFake: TrackerRepository {
         return if (shouldReturnError) {
             Result.failure(Throwable())
         } else {
-            Result.success(searchResult)
+            Result.success(searchResults)
         }
     }
 

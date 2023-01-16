@@ -25,7 +25,7 @@ Fot this project, the architecture is divided into 3 layers:
     - Also contains viewModels, the viewModels allow to change the state to the UI
 
 
-## Why use cases are important?
+## Why use cases are important? :high_brightness:
 
 - Prevent viewModels from having too much logic
 - Single responsibility principle
@@ -98,7 +98,7 @@ Layered-feature modularization is a modularization strategy that combines the be
 
 
 
-## How to create a module in Android Studio?
+## How to create a module in Android Studio? :mega:
 
 - File -> New -> New Module
 - Select the type of module you want to create
@@ -136,6 +136,91 @@ include ':app', ':core'
 ```
 
 For the features modules, the module is created as `Java or Kotlin Library` because they don't have any code inside, they only contains the submodules and these are created as `Android Library`.
+
+
+## Gradle configuration :star:
+
+For each module, we need to add the `build.gradle.kts` file.
+As all modules usually use the same dependencies it's create 2 based gradle modules for the project:
+- [base-module.gradle](base-module.gradle) contains the dependencies for domain and data modules
+- [compose-module.gradle](compose-module.gradle) contains the dependencies for compose modules
+
+An then we can include this files in the `build.gradle.kts` file of each module. For example:
+
+[tracker/tracker_data/build.gradle.kts](tracker/tracker_data/build.gradle.kts)
+```kotlin
+apply {
+    from("$rootDir/base-module.gradle")
+}
+
+dependencies {
+    "implementation"(project(Modules.core))
+    "implementation"(project(Modules.trackerDomain))
+
+    "implementation"(Retrofit.okHttp)
+    "implementation"(Retrofit.retrofit)
+    "implementation"(Retrofit.okHttpLoggingInterceptor)
+    "implementation"(Retrofit.moshiConverter)
+
+    "kapt"(Room.roomCompiler)
+    "implementation"(Room.roomKtx)
+    "implementation"(Room.roomRuntime)
+}
+```
+
+
+[tracker/tracker_domain/build.gradle.kts](tracker/tracker_domain/build.gradle.kts)
+```kotlin
+apply {
+    from("$rootDir/base-module.gradle")
+}
+
+dependencies {
+    "implementation"(project(Modules.core))
+    "implementation"(Coroutines.coroutines)
+}
+```
+
+
+[tracker/tracker_presentation/build.gradle.kts](tracker/tracker_presentation/build.gradle.kts)
+```kotlin
+apply {
+    from("$rootDir/compose-module.gradle")
+}
+
+dependencies {
+    "implementation"(project(Modules.core))
+    "implementation"(project(Modules.trackerDomain))
+    "implementation"(project(Modules.coreUi))
+    "implementation"(Coil.coilCompose)
+}
+```
+
+When we used **project** that means that we are using a module from the project. For example, the `core` module is located in the `:core` path. So, we can use the `project` function to use this module.
+
+The `Modules.core` is the name of the module and it's located in the [buildSrc/src/main/java/Modules.kt](buildSrc/src/main/java/Modules.kt) file. This file contains the name of all modules in the project.
+
+Like this :point_down:
+
+```kotlin
+object Modules {
+    const val app = ":app"
+
+    const val core = ":core"
+    const val coreUi = ":core-ui"
+
+    const val onboardingDomain = ":onboarding:onboarding_domain"
+    const val onboardingPresentation = ":onboarding:onboarding_presentation"
+
+    const val trackerData = ":tracker:tracker_data"
+    const val trackerDomain = ":tracker:tracker_domain"
+    const val trackerPresentation = ":tracker:tracker_presentation"
+}
+```
+
+In the [**buildSrc**](buildSrc/src/main/java) is located all dependencies that are used in the project. Separated by type, for example, all Retrofit dependencies are located in the [Retrofit.kt](buildSrc/src/main/java/Retrofit.kt) file and all Coil dependencies are located in the [Coil.kt](buildSrc/src/main/java/Coil.kt) file, etc.
+
+
 
 
 ## Easy recap about modularization :rewind:

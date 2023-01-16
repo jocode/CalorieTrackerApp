@@ -36,16 +36,16 @@ To learn more about the project structure, check out the [Architecture Guide](ar
 
 ## Screenshots :camera:
 
-| Onboarding                                                            | Overview                                      | Search                                    |
-|-----------------------------------------------------------------------|-----------------------------------------------|-------------------------------------------|
-| ![Onboarding Welcome](screenshots/onboarding_welcome.png)             | ![Overview](screenshots/overview.png)         | ![Search](screenshots/search.png)         |
-| ![Onboarding Gender](screenshots/onboarding_gender.png)               | ![Overview Add](screenshots/overview_add.png) | ![Search Add](screenshots/search_add.png) |
-| ![Onboarding Age](screenshots/onboarding_age.png)                     |                                               |                                           |
-| ![Onboarding Height](screenshots/onboarding_height.png)               |                                               |                                           |
-| ![Onboarding Weight](screenshots/onboarding_weight.png)               |                                               |                                           |
-| ![Onboarding Activity](screenshots/onboarding_activity.png)           |                                               |                                           |
-| ![Onboarding Goal](screenshots/onboarding_goal.png)                   |                                               |                                           |
-| ![Onboarding Nutrient Goal](screenshots/onboarding_nutrient_goal.png) |                                               |                                           |
+| Onboarding Feature                                                    | Tracker Feature                               | 
+|-----------------------------------------------------------------------|-----------------------------------------------|
+| ![Onboarding Welcome](screenshots/onboarding_welcome.png)             | ![Overview](screenshots/overview.png)         |
+| ![Onboarding Gender](screenshots/onboarding_gender.png)               | ![Overview Add](screenshots/overview_add.png) |
+| ![Onboarding Age](screenshots/onboarding_age.png)                     | ![Search](screenshots/search.png)             |
+| ![Onboarding Height](screenshots/onboarding_height.png)               | ![Search Add](screenshots/search_add.png)     |
+| ![Onboarding Weight](screenshots/onboarding_weight.png)               |                                               |
+| ![Onboarding Activity](screenshots/onboarding_activity.png)           |                                               |
+| ![Onboarding Nutrient Goal](screenshots/onboarding_nutrient_goal.png) |                                               |
+| ![Onboarding Goal](screenshots/onboarding_goal.png)                   |                                               |
 
 
 ## Libraries Used :books:
@@ -66,4 +66,3 @@ To learn more about the project structure, check out the [Architecture Guide](ar
 - [Robolectric](http://robolectric.org/)
 - [Truth](https://truth.dev/)
 - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
-- 

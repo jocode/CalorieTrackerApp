@@ -135,6 +135,8 @@ include ':app', ':core'
 ...
 ```
 
+For the features modules, the module is created as `Java or Kotlin Library` because they don't have any code inside, they only contains the submodules and these are created as `Android Library`.
+
 
 ## Easy recap about modularization :rewind:
 
